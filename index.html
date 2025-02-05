@@ -27,5 +27,31 @@
             alert('Данные отправлены! AI-бот создаст заявку.');
         });
     </script>
+    <script>
+    document.getElementById('applicationForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        let formData = {
+            name: document.querySelector('input[placeholder="Ваше имя"]').value,
+            email: document.querySelector('input[placeholder="Email"]').value,
+            phone: document.querySelector('input[placeholder="Телефон"]').value,
+            city: document.querySelector('input[placeholder="Город"]').value,
+            about: document.querySelector('textarea[placeholder="О себе"]').value
+        };
+
+        let response = await fetch("https://marye.pythonanywhere.com/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+        });
+
+        if (response.ok) {
+            alert("Заявка успешно отправлена!");
+        } else {
+            alert("Ошибка отправки. Попробуйте позже.");
+        }
+    });
+</script>
+
 </body>
 </html>
