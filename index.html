@@ -39,7 +39,7 @@
             about: document.querySelector('textarea[placeholder="Резюме"]').value
         };
 
-        let response = await fetch("https://marye.pythonanywhere.com/", {
+        let response = await fetch("https://marye.pythonanywhere.com/submit", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData)
